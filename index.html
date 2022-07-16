@@ -3,42 +3,34 @@
   <head>
     <title>Cowin-clone</title>
     <link rel="stylesheet" href="index.css">
+    <link rel="icon" href="./vaccine_logo.jpg"> 
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <style>
+      .mySlides {display:none}
+      .w3-left, .w3-right, .w3-badge {cursor:pointer}
+      .w3-badge {height:13px;width:13px;padding:0}
+      </style>
   </head>
   <body>
-    <div class="slideshow-container">
-      <div class="mySlides ">
-        <div class="numbertext">1 / 4</div>
-        <img src="happynewyearbanner2.jpeg" style="width:100%">
+    <div class="w3-container">
+      <div class="w3-content w3-display-container" style="max-width:800px">
+        <img class="mySlides" src="happynewyearbanner2.jpeg" style="width:100%">
+        <img class="mySlides" src="newyearbanner4.jpeg" style="width:100%">
+        <img class="mySlides" src="vaccinated_img2Scroll.png" style="width:100%">
+        <img class="mySlides" src="home-dose2-banner.jpeg" style="width:100%">
+        <div class="w3-center w3-container w3-section w3-large w3-text-white w3-display-bottommiddle" style="width:100%">
+          <div class="w3-left w3-hover-text-khaki" onclick="plusDivs(-1)">&#10094;</div>
+          <div class="w3-right w3-hover-text-khaki" onclick="plusDivs(1)">&#10095;</div>
+          <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(1)"></span>
+          <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(2)"></span>
+          <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(3)"></span>
+          <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(4)"></span>
+        </div>
       </div>
-      <div class="mySlides fade">
-        <div class="numbertext">2 / 4</div>
-        <img src="newyearbanner4.jpeg" style="width:100%">
-        
-      </div>
-      <div class="mySlides fade">
-        <div class="numbertext">3 / 4</div>
-        <img src="vaccinated_img2Scroll.png" style="width:100%">
-       
-      </div>
-      <div class="mySlides fade">
-      <div class="numbertext">4 / 4</div>
-       <img src="home-dose2-banner.jpeg" style="width:100%">                                   
-     </div>
-      <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-      <a class="next" onclick="plusSlides(1)">&#10095;</a>
-    </div>
-    
-    <br>
-    <div  style="text-align:center">
-      <span class="dot" onclick="currentSlide(1)"></span>
-      <span class="dot" onclick="currentSlide(2)"></span>
-      <span class="dot" onclick="currentSlide(3)"></span>
-      <span class="dot" onclick="currentSlide(4)"></span>
-    </div>
     <!-- Api use codes -->
     <div class="opening">
       <h1>Find Vaccination Centers near to you</h1>
-      <img src="./vaccine1.jpg" alt="">
+      <img src="./vaccine1.jpg" alt=""  style="max-width:800px">
     </div>
     <div class="searchBox">
       <input type="text" placeholder="Enter your Area Pincode" id="input" />
@@ -49,8 +41,36 @@
       </button>
     </div>
 
-    <div class="cards"></div>
+    <div class="cards" style="margin-left:auto"></div>
     
+<script>
+  var slideIndex = 1;
+  showDivs(slideIndex);
+  
+  function plusDivs(n) {
+    showDivs(slideIndex += n);
+  }
+  
+  function currentDiv(n) {
+    showDivs(slideIndex = n);
+  }
+  
+  function showDivs(n) {
+    var i;
+    var x = document.getElementsByClassName("mySlides");
+    var dots = document.getElementsByClassName("demo");
+    if (n > x.length) {slideIndex = 1}
+    if (n < 1) {slideIndex = x.length}
+    for (i = 0; i < x.length; i++) {
+      x[i].style.display = "none";  
+    }
+    for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" w3-white", "");
+    }
+    x[slideIndex-1].style.display = "block";  
+    dots[slideIndex-1].className += " w3-white";
+  }
+  </script>
     <script src="jquery-3.6.0.js"></script>
     <script src="index.js"></script>
   </body>
