@@ -1,17 +1,22 @@
-
+      
       var slideIndex = 0;
       showSlides();
       function showSlides(pincode) {
         var i;
+        var dots = document.getElementsByClassName("demo");
         var slides = document.getElementsByClassName("mySlides");
         for(i = 0; i < slides.length; i++) {
           slides[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+          dots[i].className = dots[i].className.replace(" w3-white", "");
         }
         slideIndex++;
         if(slideIndex > slides.length) {
           slideIndex = 1
         }
         slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex-1].className += " w3-white";
         setTimeout(showSlides, 5000); // Change image every 5 seconds
       }
       function currentSlide(x){
@@ -47,12 +52,11 @@ function cowinData(pincode) {
             e.min_age_limit,
             e.available_capacity,
             e.block_name,
-            e.district_name,
-            e.slots,
+            e.district_name, 
           ];
           centers.push(centerInfo);
           let code = `
-      <div class="card">
+      <div class="card" >
       <h1>
       <span class="category">Center Name - </span>
       ${centers[i][0]}
@@ -86,10 +90,7 @@ function cowinData(pincode) {
     <span class="category">District Name - </span>
     ${centers[i][7]}
   </h3>
-  <h3>
-    <span class="category">Available Slots - </span>
-     ${centers[i][8].join(" | ")}
-  </h3>
+  
     </div>
     </div>`;
           cards.innerHTML += code;
@@ -103,7 +104,7 @@ function cowinData(pincode) {
 
 
     } else{
-        alert("Some error occured")
+        alert("Invalid Pincode or uncaught Error")
     }
   };
 
